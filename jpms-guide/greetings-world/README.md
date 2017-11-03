@@ -9,7 +9,12 @@ $ javac --module-path mods -d mods/com.greetings \
     src/com.greetings/module-info.java src/com.greetings/com/greetings/Main.java
 
 $ java --module-path mods -m com.greetings/com.greetings.Main
- Greetings world!
+```
+
+Output:
+
+```
+Greetings world!
 ```
 
 
@@ -28,7 +33,7 @@ $ ls mlib
 com.greetings.jar   org.astro@1.0.jar
 ```
 
-run:
+Run:
 
 ```
 $ java -p mlib -m com.greetings
@@ -39,4 +44,18 @@ Greetings world!
 
 ```
 jar --describe-module --file=mlib/org.astro@1.0.jar
+```
+
+## Jlink
+
+```
+jlink --module-path $JAVA_HOME/jmods:mlib --add-modules com.greetings --launcher start=com.greetings/com.greetings.Main --output greetingsapp
+```
+
+Run:
+
+```
+cd greetingsapp/bin
+cat ./start
+./start
 ```
